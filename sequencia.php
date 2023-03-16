@@ -15,8 +15,9 @@
             include_once ("Sequencia.class.php");
             
             $sequencia = new Sequencia();
-            $sequencia->setInicio($_POST["inicio"]);
-            $sequencia->setFim($_POST["fim"]);
+            $sequencia -> setInicio($_POST["inicio"]);
+            $sequencia -> setFim($_POST["fim"]);
+            
                 if ($_POST['escolha'] == 'todos')
                 $sequencia -> exibirTodos();
                 elseif ($_POST['escolha'] == 'pares')
