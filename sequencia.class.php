@@ -8,11 +8,11 @@ class Sequencia{
 
     //metodos
     public function setInicio($inicio) {
-        $this->inicio = $inicio;
+        $this -> inicio = $inicio;
     }
 
     public function setFim($fim) {
-        $this->fim = $fim;
+        $this -> fim = $fim;
     }
 
     //colocar os métodos e exibir dentro do if
