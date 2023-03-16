@@ -1,7 +1,3 @@
-<?php
-include("sequencia.class.php");
-?>
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -11,26 +7,45 @@ include("sequencia.class.php");
     <title>Mostrar a Sequência</title>
 </head>
 <body>
-    
+   
+    <?php
+        
+        if (isset($_POST["botao"])) {
+
+            include_once ("Sequencia.class.php");
+            
+            $sequencia = new Sequencia();
+            $sequencia->setInicio($_POST["inicio"]);
+            $sequencia->setFim($_POST["fim"]);
+                if ($_POST['escolha'] == 'todos')
+                $sequencia -> exibirTodos();
+                elseif ($_POST['escolha'] == 'pares')
+                $sequencia -> exibirPares();
+                elseif ($_POST['escolha'] == 'impares')
+                $sequencia -> exibirImpares();
+        } else {
+
+    ?>
+
     <fieldset style="width:25%; background-color: rgb(250, 250, 250);" >
         <legend> Teste de Sequência PHP </legend>
                     
-        <div><br>
+        <br>
 
         <form action="sequencia.php" id="inicio" method="post">
             Selecione o valor inicial:
-            <select name="inicio" value="inicio">
+            <select name="inicio">
             <?php
                 for ($i = 1; $i <= 100; $i ++) {
                     echo '<option value =  "'.$i.'">'.$i.'</option>';
                 }
             ?>
             </select> 
-        </form><br>
+        <br><br>
 
         <form action="sequencia.php" id="fim" method="post">
             Selecione o valor final:
-            <select name="fim" id="fim">
+            <select name="fim">
             <?php
                 for ($i = 1; $i <= 100; $i ++) {
                     echo '<option value = "'.$i.'">'.$i.'</option>';
@@ -38,7 +53,7 @@ include("sequencia.class.php");
             ?>
 
             </select>
-        </form><br>
+        <br><br>
 
     <label for="mostrar">Mostrar:</label><br><br>
 
@@ -51,31 +66,12 @@ include("sequencia.class.php");
     <input type="radio" id="impares" name="escolha" value="impares">
     <label for="impares">Apenas os ímpares</label><br><br>
 
-    <input type="submit" name="submit" value="Mostrar Sequência">
+    <input type="submit" name="botao" value="Mostrar Sequência">
 
-    </div>
-    </fieldset>
+    </form>
 
     <?php
-        
-        if (!isset($_POST['submit'])) {
-            
-            $sequencia = new Sequencia();
-            $sequencia->setInicio($_POST['inicio']);
-            $sequencia->setFim($_POST['fim']);
-
-                if ($_POST['escolha'] == 'todos'){
-                    $sequencia->exibirTodos();
-                } elseif ($_POST['escolha'] == 'pares'){
-                    $sequencia->exibirPares();
-                } elseif ($_POST['escolha'] == 'impares'){
-                    $sequencia->exibirImpares();
-                }
-        } else {
-
         }
-
     ?>
-    
 </body>
 </html>
